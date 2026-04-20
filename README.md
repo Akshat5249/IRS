@@ -4,8 +4,8 @@
 
 **An intelligent Document Q&A system leveraging RAG, vector embeddings, and Large Language Models to extract contextual answers from PDF documents.**
 
-⚡ Fully deployed and accessible via Streamlit Cloud
----
+**⚡ Fully deployed and accessible via Streamlit Cloud**
+
 
 ## 🚀 Overview
 
@@ -81,7 +81,7 @@ User Question → Embedding → Similarity Search (k=5) → Top-5 Chunks + Quest
 | **Framework** | [LangChain](https://python.langchain.com) | Orchestrates RAG pipeline & LLM chains |
 | **Vector DB** | [FAISS](https://github.com/facebookresearch/faiss) | Efficient semantic similarity search |
 | **Embeddings** | [HuggingFace](https://huggingface.co) (all-MiniLM-L6-v2) | Text-to-vector conversion |
-| **LLM** | [LLaMA 3 8B](https://huggingface.co/meta-llama) (via [OpenRouter](https://openrouter.ai)) | Answer generation |
+| **LLM** | [LLaMA 3 8B](https://huggingface.co/meta-llama) | Answer generation |
 | **UI** | [Streamlit](https://streamlit.io) | Interactive web interface |
 | **PDF Processing** | [PyPDF](https://pypi.org/project/pypdf/) | Document text extraction |
 | **Memory** | LangChain ConversationBufferMemory | Chat history management |
@@ -161,10 +161,8 @@ cp .env.example .env
 
 Edit `.env` and add your OpenRouter API key:
 ```
-OPENROUTER_API_KEY=your_api_key_here
+API_KEY=your_api_key_here
 ```
-
-Get your free API key: https://openrouter.ai/auth/signup
 
 ### Step 5: Run the Application
 ```bash
@@ -180,7 +178,7 @@ The app will open at `http://localhost:8501`
 ### Deploy on Streamlit Cloud (Recommended)
 1. Push your repo to GitHub
 2. Connect repo at [share.streamlit.io](https://share.streamlit.io)
-3. Add `OPENROUTER_API_KEY` as a secret in Streamlit Cloud settings
+3. Add `API_KEY` as a secret in Streamlit Cloud settings
 4. Deploy with one click — automatic updates on push
 
 ### Deploy on Other Platforms
@@ -280,11 +278,10 @@ Contributions are welcome! Please:
 
 ## 📧 Contact & Support
 
-- **Author**: Akshat
-- **Email**: akshattayal5249@gmail.com
-- **GitHub**: [@Akshat5249](https://github.com/Akshat5249)
-
 Have questions? Open an issue on GitHub or reach out directly.
+
+- **Email**: akshattayal5249@gmail.com
+- **Linkedin**: [Akshat Tayal](https://www.linkedin.com/in/akshattayal/)
 
 ---
 
@@ -299,4 +296,4 @@ Have questions? Open an issue on GitHub or reach out directly.
 
 ---
 
-**Made with ❤️ by AI enthusiasts, for AI enthusiasts.**
+Thank You ❤️
