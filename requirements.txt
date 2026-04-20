@@ -1,7 +1,11 @@
-python-dotenv
-google-generativeai
-langchain
-pypdf
-faiss-cpu
 streamlit
+langchain==0.1.16
+langchain-community==0.0.38
+langchain-openai==0.0.8
+langchain-text-splitters
+faiss-cpu
+sentence-transformers
+pypdf
+python-dotenv
+openai
 -e .
