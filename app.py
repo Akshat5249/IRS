@@ -7,28 +7,42 @@ def user_input(user_question):
         st.error("Please upload and process a document first.")
         return
     response = st.session_state.conversation({'question': user_question})
-    st.session_state.chatHistory = response['chat_history']
+    st.session_state.chat_history = response.get('chat_history', [])
 
-    for i, message in enumerate(st.session_state.chatHistory):
+    # Display chat messages
+    for i, message in enumerate(st.session_state.chat_history):
         if i % 2 == 0:
-            st.write("User: ", message.content)
+            st.chat_message("user").write(message.content)
         else:
-            st.write("Reply: ", message.content)
+            st.chat_message("assistant").write(message.content)
+
+    # Show sources in expandable section
+    if "source_documents" in response:
+        with st.expander("📄 Sources"):
+            for i, doc in enumerate(response["source_documents"]):
+                page = doc.metadata.get("page", "N/A")
+                
+                st.markdown(f"**Source {i+1} (Page {page})**")
+                st.write(doc.page_content[:300] + "...")
+                st.divider()
 
 def main():
     st.title("IRS - Information Retrieval System")
     st.write("Welcome to the Information Retrieval System (IRS)!")
 
-    user_question = st.text_input("Ask a question about the document:")
+    user_question = st.chat_input("Ask a question about the document:")
 
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
 
-    if "chatHistory" not in st.session_state:
-        st.session_state.chatHistory = None
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = []
 
     if user_question:
-        user_input(user_question)
+        if st.session_state.conversation is None:
+            st.error("Please upload and process a document first.")
+        else:
+            user_input(user_question)
 
     with st.sidebar:
         st.header("Navigation")
